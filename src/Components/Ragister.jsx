@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Card, Form, Button} from "react-bootstrap";
 
 const Ragister = () => {
+  
   return (
     <>
       <Container className="d-flex justify-content-center">
