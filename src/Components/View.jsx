@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
@@ -17,18 +17,16 @@ const View = () => {
   const showUsers = () => {
     axios.get('http://localhost:8000/user')
       .then(res => {
-        console.log(res.userData.data)
-        setUserData(res.userData.data)
+        setUserData(res.data.data)
       }).catch(err => {
         console.log(err);
       })
   }
 
- 
   return (
     <Container>
       <Row style={{ paddingTop: 100 }} className="d-flex justify-content-center align-items-center">
-      <Col md={10} lg={12} xs={12}>
+        <Col md={10} lg={12} xs={12}>
           <Table striped bordered hover >
             <thead>
               <tr>
@@ -41,25 +39,24 @@ const View = () => {
               </tr>
             </thead>
             <tbody>
-              {userData.map((Register, id) =>  {
+              {userData.map((a, id) => {
                 return (
-                  <tr key={id} >
+                  <tr key={id}>
                     <td>{id + 1}</td>
-                    <td>{Register.fname}</td>
-                    <td>{Register.email}</td>
-                    <td>{Register.Password} </td>
-                    <td>{Register.Mobile} </td>
-                    <td>{Register.Address} </td>
+                    <td>{a.fname}</td>
+                    <td>{a.email}</td>
+                    <td>{a.password} </td>
+                    <td>{a.mobile} </td>
+                    <td>{a.address} </td>
                   </tr>
                 )
               })}
             </tbody>
           </Table>
         </Col>
-   
       </Row>
     </Container>
   )
 }
 
-export default View
+export default View ;
